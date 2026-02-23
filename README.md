@@ -4,7 +4,7 @@ An autonomous, 1/10th scale Rear-Wheel Drive (RWD) vehicle simulation built to e
 
 ## 🛠️ Tech Stack
 * **Simulation:** Ignition Gazebo
-* **Framework:** ROS 2
+* **Framework:** ROS 2 Humble
 * **Telemetry & Visualization:** Foxglove Studio (Local)
 * **Control Stack:** Python / `rclpy` (Transitioning to C++ / `rclcpp`)
 
