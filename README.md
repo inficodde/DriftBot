@@ -33,3 +33,32 @@ An autonomous, 1/10th scale Rear-Wheel Drive (RWD) vehicle simulation built to e
 **4. Start the Communication Bridge:**
 ```bash
 ros2 run ros_gz_bridge parameter_bridge /model/driftbot/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry /model/driftbot/joint/front_left_steer_joint/cmd_pos@std_msgs/msg/Float64@ignition.msgs.Double /model/driftbot/joint/front_right_steer_joint/cmd_pos@std_msgs/msg/Float64@ignition.msgs.Double /model/driftbot/joint/rear_left_wheel_joint/cmd_vel@std_msgs/msg/Float64@ignition.msgs.Double /model/driftbot/joint/rear_right_wheel_joint/cmd_vel@std_msgs/msg/Float64@ignition.msgs.Double
+
+
+## 🛠️ Troubleshooting & Common Fixes
+
+### 🛸 The "Flying Audi" (Physics Instability)
+* **Issue:** The car somersaults or explodes into the air upon spawning.
+* **Cause:** Usually a "Divide by Zero" in the physics engine due to missing `<inertial>` tags in the wheels or the chassis collision box overlapping with the wheel cylinders.
+* **Fix:** Ensure all links in `model.sdf` have mass/inertia and the chassis box width is restricted to `0.18m` to clear the wheels.
+
+### 🧊 The Car Won't Move (Actuation)
+* **Issue:** Logs show the MPC is working, but the car is stationary in Gazebo.
+* **Cause 1:** Missing `p_gain` in the `JointController` plugins.
+* **Cause 2:** Topic mismatch between the Node (`cmd_vel`) and the Bridge.
+* **Fix:** Verify `p_gain` is set to at least `10.0` in `model.sdf` and check `ign topic -l` to ensure the topics match the bridge.
+
+### 👻 The "Binary Ghost" (Old Code Running)
+* **Issue:** You edited the Python code, but the terminal logs still show old variables (e.g., logging "Torque" instead of "vx").
+* **Cause:** ROS 2 is running a stale binary from the `install/` folder.
+* **Fix:** Run `rm -rf build/ install/ log/` and rebuild with `colcon build`.
+
+### 🏠 Missing Models
+* **Issue:** Gazebo fails to load the Audi R8 mesh or the Prius hybrid textures.
+* **Fix:** Ensure your resource path is exported in your terminal:
+  `export IGN_GAZEBO_RESOURCE_PATH=~/drift_bot_ws/src/models`
+
+### 🧱 Octagon Wall-Slamming
+* **Issue:** The car drifts perfectly in the open lot but hits the inner wall of the octagon.
+* **Cause:** The "Ghost Rabbit" reference is projecting too far ahead, causing the MPC to "cut the corner."
+* **Fix:** Decrease the projection look-ahead in `generate_drift_reference` or increase the $Q$ matrix weight for $X, Y$ in `drift_mpc.py`.
