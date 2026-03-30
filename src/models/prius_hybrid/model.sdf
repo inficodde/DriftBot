@@ -1,162 +1,98 @@
 <?xml version="1.0" ?>
 <sdf version="1.6">
-  <model name="driftbot_v2">
+  <model name="driftbot">
     <pose>0 0 0.05 0 0 0</pose>
-
     <link name="chassis">
       <pose>0 0 0.05 0 0 0</pose>
       <inertial>
-        <mass>3.5</mass> <pose>0 0 -0.02 0 0 0</pose> <inertia>
-          <ixx>0.014</ixx> 
-          <iyy>0.062</iyy>
-          <izz>0.070</izz> </inertia>
+        <mass>4.5</mass> 
+        <pose>0 0 -0.02 0 0 0</pose> 
+        <inertia><ixx>0.014</ixx><iyy>0.062</iyy><izz>0.070</izz></inertia>
       </inertial>
- <visual name="visual">
-        <pose>0 0 -0.05 1.57 0 1.57</pose> <geometry>
-          <mesh>
-            <uri>model://prius_hybrid/meshes/Aud_R8_Spyder</uri>
-            <scale>0.1 0.1 0.1</scale> 
-          </mesh>
-        </geometry>
+      <visual name="visual">
+        <pose>0 0 -0.05 1.57 0 1.57</pose>
+        <geometry><mesh><uri>model://prius_hybrid/meshes/Audi_R8_Spyder.obj</uri><scale>0.1 0.1 0.1</scale></mesh></geometry>
       </visual>
       <collision name="collision">
-        <geometry><box><size>0.45 0.20 0.08</size></box></geometry>
-      </collision>
-    </link>
-
-    <link name="front_left_knuckle">
-      <pose>0.13 0.10 0.0325 0 0 0</pose>
-      <inertial><mass>0.1</mass><inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia></inertial>
-    </link>
-    <link name="front_right_knuckle">
-      <pose>0.13 -0.10 0.0325 0 0 0</pose>
-      <inertial><mass>0.1</mass><inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia></inertial>
-    </link>
-
-    <link name="rear_left_wheel">
-      <pose>-0.13 0.10 0.0325 -1.57 0 0</pose>
-      <inertial>
-        <mass>0.05</mass> <inertia><ixx>0.00002</ixx><iyy>0.00002</iyy><izz>0.00004</izz></inertia>
-      </inertial>
-      <!-- <visual name="visual">
-        <geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry>
-        <material><ambient>0.1 0.1 0.1 1</ambient></material>
-      </visual> -->
-      <collision name="collision">
-        <geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry>
-        <surface>
-          <friction><ode><mu>0.4</mu><mu2>0.4</mu2></ode></friction>
-          <contact><ode><kp>8e6</kp><kd>300</kd><min_depth>0.002</min_depth></ode></contact>
-        </surface>
-      </collision>
-    </link>
-
-    <link name="rear_right_wheel">
-      <pose>-0.13 -0.10 0.0325 -1.57 0 0</pose>
-      <inertial>
-        <mass>0.05</mass>
-        <inertia><ixx>0.00002</ixx><iyy>0.00002</iyy><izz>0.00004</izz></inertia>
-      </inertial>
-      <!-- <visual name="visual"><geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry><material><ambient>0.1 0.1 0.1 1</ambient></material></visual> -->
-      <collision name="collision">
-        <geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry>
-        <surface>
-          <friction><ode><mu>0.4</mu><mu2>0.4</mu2></ode></friction>
-          <contact><ode><kp>8e6</kp><kd>300</kd><min_depth>0.002</min_depth></ode></contact>
-        </surface>
+        <geometry><box><size>0.45 0.18 0.08</size></box></geometry>
       </collision>
     </link>
 
     <link name="front_left_wheel">
       <pose>0.13 0.10 0.0325 -1.57 0 0</pose>
-      <inertial><mass>0.05</mass><inertia><ixx>0.00002</ixx><iyy>0.00002</iyy><izz>0.00004</izz></inertia></inertial>
-      <!-- <visual name="visual"><geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry><material><ambient>0.1 0.1 0.1 1</ambient></material></visual> -->
+      <inertial> <mass>0.5</mass>
+        <inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia>
+      </inertial>
       <collision name="collision">
         <geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry>
-        <surface>
-          <friction><ode><mu>0.6</mu><mu2>0.6</mu2></ode></friction>
-          <contact><ode><kp>8e6</kp><kd>300</kd><min_depth>0.002</min_depth></ode></contact>
-        </surface>
+        <surface><friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction></surface>
       </collision>
     </link>
-
     <link name="front_right_wheel">
       <pose>0.13 -0.10 0.0325 -1.57 0 0</pose>
-      <inertial><mass>0.05</mass><inertia><ixx>0.00002</ixx><iyy>0.00002</iyy><izz>0.00004</izz></inertia></inertial>
-      <!-- <visual name="visual"><geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry><material><ambient>0.1 0.1 0.1 1</ambient></material></visual> -->
+      <inertial>
+        <mass>0.5</mass>
+        <inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia>
+      </inertial>
       <collision name="collision">
         <geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry>
-        <surface>
-          <friction><ode><mu>0.6</mu><mu2>0.6</mu2></ode></friction>
-          <contact><ode><kp>8e6</kp><kd>300</kd><min_depth>0.002</min_depth></ode></contact>
-        </surface>
+        <surface><friction><ode><mu>1.0</mu><mu2>1.0</mu2></ode></friction></surface>
       </collision>
     </link>
 
-    <joint type="revolute" name="rear_left_wheel_joint">
-      <child>rear_left_wheel</child><parent>chassis</parent>
-      <axis><xyz>0 0 1</xyz><limit><effort>50</effort></limit><dynamics><damping>0.01</damping></dynamics></axis> </joint>
-    <joint type="revolute" name="rear_right_wheel_joint">
-      <child>rear_right_wheel</child><parent>chassis</parent>
-      <axis><xyz>0 0 1</xyz><limit><effort>50</effort></limit><dynamics><damping>0.01</damping></dynamics></axis>
-    </joint>
-
-    <joint type="revolute" name="front_left_steer_joint">
-      <child>front_left_knuckle</child><parent>chassis</parent>
-      <axis><xyz>0 0 1</xyz><limit><lower>-0.8</lower><upper>0.8</upper><effort>50</effort></limit>
-        <dynamics><damping>0.5</damping><friction>0.1</friction></dynamics> </axis>
-    </joint>
-    <joint type="revolute" name="front_right_steer_joint">
-      <child>front_right_knuckle</child><parent>chassis</parent>
-      <axis><xyz>0 0 1</xyz><limit><lower>-0.8</lower><upper>0.8</upper><effort>50</effort></limit>
-        <dynamics><damping>0.5</damping><friction>0.1</friction></dynamics>
-      </axis>
-    </joint>
-
-    <joint type="revolute" name="front_left_wheel_joint">
-      <child>front_left_wheel</child><parent>front_left_knuckle</parent>
-      <axis><xyz>0 0 1</xyz><limit><effort>0</effort></limit><dynamics><damping>0.01</damping></dynamics></axis> 
-    </joint>
-    <joint type="revolute" name="front_right_wheel_joint">
-      <child>front_right_wheel</child><parent>front_right_knuckle</parent>
-      <axis><xyz>0 0 1</xyz><limit><effort>0</effort></limit><dynamics><damping>0.01</damping></dynamics></axis>
-    </joint>
-
-    <link name="imu_link">
-      <pose>0 0 0.08 0 0 0</pose> 
-      <inertial><mass>0.05</mass><inertia><ixx>0.00001</ixx><iyy>0.00001</iyy><izz>0.00001</izz></inertia></inertial>
-      <sensor name="imu_sensor" type="imu">
-        <always_on>1</always_on><update_rate>100</update_rate> <visualize>true</visualize><topic>imu</topic>
-      </sensor>
+    <link name="rear_left_wheel">
+      <pose>-0.13 0.10 0.0325 -1.57 0 0</pose>
+      <inertial>
+        <mass>0.5</mass>
+        <inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry>
+        <surface><friction><ode><mu>0.25</mu><mu2>0.25</mu2></ode></friction></surface>
+      </collision>
     </link>
-    <joint name="imu_joint" type="fixed"><parent>chassis</parent><child>imu_link</child></joint>
-
-    <link name="lidar_link">
-      <pose>0.15 0 0.12 0 0 0</pose> <inertial><mass>0.1</mass><inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia></inertial>
-      <!-- <visual name="visual">
-        <geometry><cylinder><radius>0.03</radius><length>0.04</length></cylinder></geometry>
-        <material><ambient>0.0 0.0 0.8 1</ambient><diffuse>0.0 0.0 0.8 1</diffuse></material>
-      </visual> -->
-      <sensor name="lidar_sensor" type="gpu_lidar">
-        <update_rate>20</update_rate> <topic>scan</topic><always_on>1</always_on><visualize>true</visualize>
-        <ray><scan><horizontal><samples>360</samples><resolution>1</resolution><min_angle>-3.14159</min_angle><max_angle>3.14159</max_angle></horizontal></scan>
-          <range><min>0.15</min><max>10.0</max><resolution>0.01</resolution></range>
-        </ray>
-      </sensor>
+    <link name="rear_right_wheel">
+      <pose>-0.13 -0.10 0.0325 -1.57 0 0</pose>
+      <inertial>
+        <mass>0.5</mass>
+        <inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia>
+      </inertial>
+      <collision name="collision">
+        <geometry><cylinder><radius>0.0325</radius><length>0.026</length></cylinder></geometry>
+        <surface><friction><ode><mu>0.25</mu><mu2>0.25</mu2></ode></friction></surface>
+      </collision>
     </link>
-    <joint name="lidar_joint" type="fixed"><parent>chassis</parent><child>lidar_link</child></joint>
 
-    <plugin filename="libignition-gazebo-ackermann-steering-system.so" name="ignition::gazebo::systems::AckermannSteering">
-      <topic>/model/driftbot/cmd_vel</topic>
-      <left_steering_joint>front_left_steer_joint</left_steering_joint>
-      <right_steering_joint>front_right_steer_joint</right_steering_joint>
-      <left_joint>rear_left_wheel_joint</left_joint>
-      <right_joint>rear_right_wheel_joint</right_joint>
-      <wheel_separation>0.20</wheel_separation>
-      <wheelbase>0.26</wheelbase>
-      <wheel_radius>0.0325</wheel_radius>
-      <min_velocity>-10.0</min_velocity> <max_velocity>15.0</max_velocity> 
-      <max_acceleration>20</max_acceleration>
-      <steering_limit>0.8</steering_limit> </plugin>
+    <link name="front_left_knuckle"><pose>0.13 0.10 0.0325 0 0 0</pose><inertial><mass>0.01</mass><inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia></inertial></link>
+    <link name="front_right_knuckle"><pose>0.13 -0.10 0.0325 0 0 0</pose><inertial><mass>0.01</mass><inertia><ixx>0.0001</ixx><iyy>0.0001</iyy><izz>0.0001</izz></inertia></inertial></link>
+    
+    <joint type="revolute" name="front_left_steer_joint"><child>front_left_knuckle</child><parent>chassis</parent><axis><xyz>0 0 1</xyz><limit><lower>-0.8</lower><upper>0.8</upper></limit></axis></joint>
+    <joint type="revolute" name="front_right_steer_joint"><child>front_right_knuckle</child><parent>chassis</parent><axis><xyz>0 0 1</xyz><limit><lower>-0.8</lower><upper>0.8</upper></limit></axis></joint>
+    <joint type="revolute" name="front_left_wheel_joint"><child>front_left_wheel</child><parent>front_left_knuckle</parent><axis><xyz>0 0 1</xyz></axis></joint>
+    <joint type="revolute" name="front_right_wheel_joint"><child>front_right_wheel</child><parent>front_right_knuckle</parent><axis><xyz>0 0 1</xyz></axis></joint>
+    <joint type="revolute" name="rear_left_wheel_joint"><child>rear_left_wheel</child><parent>chassis</parent><axis><xyz>0 0 1</xyz></axis></joint>
+    <joint type="revolute" name="rear_right_wheel_joint"><child>rear_right_wheel</child><parent>chassis</parent><axis><xyz>0 0 1</xyz></axis></joint>
+
+    <plugin filename="libignition-gazebo-joint-position-controller-system.so" name="ignition::gazebo::systems::JointPositionController">
+      <joint_name>front_left_steer_joint</joint_name>
+      <topic>/model/driftbot/joint/front_left_steer_joint/cmd_pos</topic>
+    </plugin>
+    <plugin filename="libignition-gazebo-joint-position-controller-system.so" name="ignition::gazebo::systems::JointPositionController">
+      <joint_name>front_right_steer_joint</joint_name>
+      <topic>/model/driftbot/joint/front_right_steer_joint/cmd_pos</topic>
+    </plugin>
+    <plugin filename="libignition-gazebo-joint-controller-system.so" name="ignition::gazebo::systems::JointController">
+      <joint_name>rear_left_wheel_joint</joint_name>
+      <topic>/model/driftbot/joint/rear_left_wheel_joint/cmd_vel</topic>
+      <p_gain>10.0</p_gain>
+    </plugin>
+    <plugin filename="libignition-gazebo-joint-controller-system.so" name="ignition::gazebo::systems::JointController">
+      <joint_name>rear_right_wheel_joint</joint_name>
+      <topic>/model/driftbot/joint/rear_right_wheel_joint/cmd_vel</topic>
+      <p_gain>10.0</p_gain>
+    </plugin>
+    <plugin filename="libignition-gazebo-odometry-publisher-system.so" name="ignition::gazebo::systems::OdometryPublisher">
+      <odom_topic>/model/driftbot/odometry</odom_topic>
+    </plugin>
   </model>
 </sdf>
