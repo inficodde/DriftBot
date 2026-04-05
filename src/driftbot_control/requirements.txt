@@ -1,0 +1,7 @@
+# Math & Optimization
+casadi>=3.6.3
+numpy>=1.22.0
+
+# Optional: For future visualization/telemetry
+matplotlib>=3.5.0
+scipy>=1.8.0
