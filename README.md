@@ -35,6 +35,20 @@ An autonomous, 1/10th scale Rear-Wheel Drive (RWD) vehicle simulation built to e
 ros2 run ros_gz_bridge parameter_bridge /model/driftbot/odometry@nav_msgs/msg/Odometry@ignition.msgs.Odometry /model/driftbot/joint/front_left_steer_joint/cmd_pos@std_msgs/msg/Float64@ignition.msgs.Double /model/driftbot/joint/front_right_steer_joint/cmd_pos@std_msgs/msg/Float64@ignition.msgs.Double /model/driftbot/joint/rear_left_wheel_joint/cmd_vel@std_msgs/msg/Float64@ignition.msgs.Double /model/driftbot/joint/rear_right_wheel_joint/cmd_vel@std_msgs/msg/Float64@ignition.msgs.Double
 
 
+## 📦 Installation & Dependencies
+
+To ensure the MPC solver and Gazebo plugins function correctly, install the following:
+
+### 1. System Dependencies (via rosdep)
+```bash
+cd ~/drift_bot_ws
+rosdep update
+rosdep install --from-paths src --ignore-src -y
+
+## python dependencies 
+pip install -r src/driftbot_control/requirements.txt
+
+
 ## 🛠️ Troubleshooting & Common Fixes
 
 ### 🛸 The "Flying Audi" (Physics Instability)
@@ -62,3 +76,6 @@ ros2 run ros_gz_bridge parameter_bridge /model/driftbot/odometry@nav_msgs/msg/Od
 * **Issue:** The car drifts perfectly in the open lot but hits the inner wall of the octagon.
 * **Cause:** The "Ghost Rabbit" reference is projecting too far ahead, causing the MPC to "cut the corner."
 * **Fix:** Decrease the projection look-ahead in `generate_drift_reference` or increase the $Q$ matrix weight for $X, Y$ in `drift_mpc.py`.
+
+
+
