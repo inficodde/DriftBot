@@ -2,31 +2,32 @@
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
   <name>driftbot_control</name>
-    <version>0.0.1</version>
-      <description>Nonlinear MPC-based autonomous drifting for 1/10th scale RWD vehicles.</description>
-        <maintainer email="abrahamdele01@gmail.com">abraham</maintainer>
-          <license>TODO: License declaration</license>
+  <version>0.0.1</version>
+  <description>Nonlinear MPC-based autonomous drifting for 1/10th scale RWD vehicles.</description>
+  <maintainer email="abrahamdele01@gmail.com">abraham</maintainer>
+  <license>TODO: License declaration</license>
 
-            <depend>rclpy</depend>
-              <depend>std_msgs</depend>
-                <depend>nav_msgs</depend>
-                  <depend>geometry_msgs</depend>
-                    <depend>sensor_msgs</depend>
-                      <depend>tf2_ros</depend>
+  <depend>rclpy</depend>
+  <depend>std_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>tf2_ros</depend>
 
-                        <exec_depend>ros_gz_bridge</exec_depend>
-                          <exec_depend>ros_gz_sim</exec_depend>
-                            <exec_depend>ros_gz_interfaces</exec_depend>
+  <exec_depend>ros_gz_bridge</exec_depend>
+  <exec_depend>ros_gz_sim</exec_depend>
+  <exec_depend>ros_gz_interfaces</exec_depend>
 
-                              <test_depend>ament_copyright</test_depend>
-                                <test_depend>ament_flake8</test_depend>
-                                  <test_depend>ament_pep257</test_depend>
-                                    <test_depend>python3-pytest</test_depend>
+  <test_depend>ament_copyright</test_depend>
+  <test_depend>ament_flake8</test_depend>
+  <test_depend>ament_pep257</test_depend>
+  <test_depend>python3-pytest</test_depend>
 
-                                      <export>
-                                          <build_type>ament_python</build_type>
-                                            </export>
-                                            </package>
+  <export>
+   <build_type>ament_python</build_type>
+  </export>
+
+</package>
                                             
                                             
                                             
